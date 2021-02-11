@@ -1,1 +1,18 @@
 /* This file is for your main application css. */
+
+body {
+  background-color: #1E1E1E;
+  color: antiquewhite;
+  font-weight: bold;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input, select, textarea {
+  color: antiquewhite;
+  font-weight: bold;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
