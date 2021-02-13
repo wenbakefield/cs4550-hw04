@@ -4,21 +4,49 @@ defmodule Practice.Calc do
     num
   end
 
+  # Get index of highest priority operator (M->D->A->S)
+  def get_highest_priority(expr) do
+    Enum.find_index(expr, &String.equivalent?(&1, "-")) # Lowest
+    || Enum.find_index(expr, &String.equivalent?(&1, "+"))
+    || Enum.find_index(expr, &String.equivalent?(&1, "/"))
+    || Enum.find_index(expr, &String.equivalent?(&1, "*")) # Highest
+  end
+  
+  # Modified from Evaluation of Expression Tree algorithm
+  # Attribution: https://www.geeksforgeeks.org/evaluation-of-expression-tree/
+
+  # Base case
+  defp eval_expr_tree([num]) do
+    parse_float(num)
+  end
+
+  # Build tree recursively
+  defp eval_expr_tree(expr) do
+    index = get_highest_priority(expr)
+    left = Enum.slice(expr, 0..(index - 1))
+    right = Enum.slice(expr, (index + 1)..Enum.count(expr))
+    eval(eval_expr_tree(left), Enum.at(expr, index), eval_expr_tree(right))
+  end
+  
+  # Base case
+  defp eval(num) do
+    num
+  end
+
+  # Evaluate expression recursively
+  defp eval(a, op, b) do
+    case op do
+      "*" -> eval(a) * eval(b)
+      "/" -> eval(a) / eval(b)
+      "+" -> eval(a) + eval(b)
+      "-" -> eval(a) - eval(b)
+    end
+  end
+
+  # Main
   def calc(expr) do
-    # This should handle +,-,*,/ with order of operations,
-    # but doesn't need to handle parens.
     expr
     |> String.split(~r/\s+/)
-    |> hd
-    |> parse_float
-    |> :math.sqrt()
-
-    # Hint:
-    # expr
-    # |> split
-    # |> tag_tokens  (e.g. [+, 1] => [{:op, "+"}, {:num, 1.0}]
-    # |> convert to postfix
-    # |> reverse to prefix
-    # |> evaluate as a stack calculator using pattern matching
+    |> eval_expr_tree
   end
 end
