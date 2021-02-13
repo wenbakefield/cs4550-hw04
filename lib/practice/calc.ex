@@ -6,10 +6,8 @@ defmodule Practice.Calc do
 
   # Get index of highest priority operator (M->D->A->S)
   def get_highest_priority(expr) do
-    Enum.find_index(expr, &String.equivalent?(&1, "-")) # Lowest
-    || Enum.find_index(expr, &String.equivalent?(&1, "+"))
-    || Enum.find_index(expr, &String.equivalent?(&1, "/"))
-    || Enum.find_index(expr, &String.equivalent?(&1, "*")) # Highest
+    min(Enum.find_index(expr, &String.equivalent?(&1, "-")), Enum.find_index(expr, &String.equivalent?(&1, "+"))) ||
+    min(Enum.find_index(expr, &String.equivalent?(&1, "/")), Enum.find_index(expr, &String.equivalent?(&1, "*")))
   end
   
   # Modified from Evaluation of Expression Tree algorithm
