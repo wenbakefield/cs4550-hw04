@@ -1,0 +1,44 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+Ben Wakefield
+
+
+2. What hostname did you deploy your app to?
+http://hw04.wenbakefield.com/
+
+
+3. What's the URL of your git for this assignment?
+https://github.com/wenbakefield/cs4550-hw04
+
+
+4. How much of the functionality did you complete?
+All functionality.
+
+
+5. Did you successfully deploy? If not, what's broken?
+Yes.
+
+
+6. How comfortable do you feel with Elixir now?
+I feel much more comfortable with Elixir now,
+I definitely see its similarity to Racket.
+
+
+7. Which parts of this assignment did you have trouble with, if any?
+I had a bit of trouble with the calc implementation, everything else
+was relatively smooth.
+
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8
